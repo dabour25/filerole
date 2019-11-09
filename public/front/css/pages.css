@@ -1,0 +1,26 @@
+.page-subheader .ph-content-wrap {width: 100%; height: 400px; min-height: 400px;}
+.page-subheader .ph-content-wrap {padding-top: 100px;}
+.page-subheader {position: relative; top: 0; z-index: 0;}
+.kl-bottommask--mask6 { position: absolute; bottom: 0; left: 0; width: 100%; height: 57px;}
+.kl-bottommask--mask6 .svgmask {position: absolute; bottom:0; left:50%; -webkit-transform:translateX(-50%); -ms-transform:translateX(-50%); 
+	transform:translateX(-50%);}
+	
+/* Breadcrumbs */
+.breadcrumbs {margin: 0 0 10px; padding:7px 15px 6px; list-style:none; background:rgba(0, 0, 0, 0.8); float: left; border-radius: 2px;}
+.breadcrumbs li {float:left; color:#eee; line-height:1.5; font-size:14px; font-weight:600; position:relative; text-transform: uppercase;}
+.breadcrumbs li:first-child { padding-left:0; background:none; margin-left:0;}
+.breadcrumbs li a {color:#fff;}
+.breadcrumbs li:after,
+.breadcrumbs2 li:after{ border: 4px solid transparent; content: ''; height: 0; width: 0; pointer-events: none; display: inline-block; border-left-color: #cd2122; margin: 0 5px 2px 10px;}
+.breadcrumbs li:last-child:after,
+.breadcrumbs2 li:last-child:after{display: none;}
+
+/* Header titles */
+.subheader-titles {text-align:right; margin-top: -7px;}
+.subheader-titles.left {text-align: left;}
+.subheader-maintitle {color:#fff; line-height:1.3; margin:0 0 5px}
+.subheader-subtitle { color: #fff; display: inline-block; margin: 0; font-weight: 400; font-size: 16px; 
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.shadowUP {position:absolute; bottom:0; left:0; width:100%; height:20px; background:url(../images/shadow-up.png) no-repeat center bottom; z-index: 2;}
+.shadowDown {position:absolute; bottom:0; left:0; width:100%; height:20px; background:url(../images/shadow-down.png) no-repeat center bottom; z-index: 2;}
+.subheader-currentdate { color:#383838; font:12px Arial, Helvetica, sans-serif; float: left; padding: 6px 10px; line-height:1; background: rgba(255, 255, 255, 0.5); clear: left; border-radius: 2px;}

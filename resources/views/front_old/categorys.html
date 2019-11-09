@@ -1,0 +1,637 @@
+<!--
+Author: FileRole
+Author URL: http://filerole.com
+-->
+
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+	<title>FileRole Booking Front</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="filerole, programs, startup" />
+
+    <!-- Bootstrap if AR 
+    <link rel="stylesheet" href="css/bootstrap-rtl.min.css"> -->
+	
+	<!-- Bootstrap if EN -->
+    <link rel="stylesheet" href="css/bootstrap.css"> 
+    
+    <!-- Web Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
+    <!-- font if ar 
+    <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600,700,900" rel="stylesheet"> -->
+    
+    <!-- font if en -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+	<!-- Style-CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    
+    <!-- js head -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</head>
+
+<body>
+    
+    <!-- login popup -->
+    <div class="all_pop" id="login">
+        <div class="login">
+            <a href="#" onclick="closeLogin()" class="close_log"> <i class="fas fa-times"></i>  </a>
+            <h3>SIGN IN YOUR ACCOUNT</h3>
+            <form action="#">
+                <label> email </label>
+                <input type="email" placeholder="Example@email.com" name="login_email" required>
+                <label> password </label>
+                <input type="password" placeholder="*****" name="login_passowrd" required>
+                <div class="input-group">
+                    <input type="checkbox"> <label> REMEMBER ME </label>
+                </div>
+                <button type="submit" class="btn btn_submit">Login</button>
+            </form>
+            <a href="#" class="forgot_pass" onclick="showforgot()"> FORGOT YOUR PASSWORD? </a>
+        </div>
+    </div> <!-- // login popup -->
+    
+    <!-- register popup -->
+    <div class="all_pop" id="register">
+        <div class="login register">
+            <a href="#" onclick="closeReg()" class="close_log"> <i class="fas fa-times"></i>  </a>
+            <h3>CREATE ACCOUNT</h3>
+            <form action="#">
+                <label> username </label>
+                <input type="email" placeholder="john" name="register_username" required>
+                <label> email </label>
+                <input type="email" placeholder="Example@email.com" name="register_email" required>
+                <label> password </label>
+                <input type="password" placeholder="*****" name="register_passowrd" required>
+                <label> confirm password </label>
+                <input type="password" placeholder="*****" name="confirm_passowrd" required>
+                <button type="submit" class="btn btn_submit">CREATE MY ACCOUNT</button>
+            </form>
+            <a href="#" class="forgot_pass" onclick="showfromreg()"> ALREADY HAVE AN ACCOUNT? </a>
+        </div>
+    </div> <!-- // register popup -->
+    
+    <!-- forgot popup -->
+    <div class="all_pop" id="forgot">
+        <div class="login register forgot">
+            <a href="#" onclick="closeforgot()" class="close_log"> <i class="fas fa-times"></i>  </a>
+            <h3>FORGOT YOUR DETAILS?</h3>
+            <form action="#">
+                <label> USERNAME OR EMAIL </label>
+                <input type="text" placeholder="..." name="forgot_email" required>
+                <button type="submit" class="btn btn_submit">SEND MY DETAILS!</button>
+            </form>
+            <a href="#" class="forgot_pass" onclick="showfromgot()"> I REMEMBER NOW! </a>
+        </div>
+    </div> <!-- // forgot popup -->
+    
+     <!-- header -->
+    <div class="header">
+        
+        <div class="overlay-nav"></div>
+        
+        <div class="container">
+            
+            <!-- main header -->
+            <div class="main-header">
+                
+                <!-- top header -->
+                <div class="top-header">
+                    <div class="row">
+                        
+                        <!-- left links -->
+                        <div class="col-md-6 col-xs-6">
+                            
+                            <!-- social -->
+                            <div class="social">
+                                <ul>
+                                    <li> <a href="#" target="_blank"> <i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li> <a href="#" target="_blank"> <i class="fab fa-twitter"></i> </a> </li>
+                                    <li> <a href="#" target="_blank"> <i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- call us -->
+                            <p class="call"> QUESTIONS? CALL : <a href="tel:0220187656"> 0220187656 <i class="fa fa-phone"></i> </a> </p>
+                            
+                        </div>
+                        
+                        <!-- right links -->
+                        <div class="col-md-6 col-xs-6">
+                            <ul class="nav">
+                                
+                                <!-- language -->
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                      <span class="fas fa-globe xs-icon"></span> Language
+                                    </a>
+                                  <ul class="dropdown-menu">
+                                    <li class="active"><a href="#">English</a></li>
+                                    <li><a href="#">Arabic</a></li>
+                                  </ul>
+                                </li>
+                                
+                                <!-- Register -->
+                                <li>
+                                    <a href="#" onclick="showReg()"><i class="fas fa-user-plus"></i> Register </a>
+                                </li>
+                                
+                                <!-- login -->
+                                <li>
+                                    <a href="#" onclick="showLogin()"><i class="fas fa-sign-in-alt"></i> login </a>
+                                </li>
+                                
+                                <!-- search -->
+                                <li id="search" class="header-search">
+                                    <!-- open search button -->
+                                    <a href="#" class="searchBtn" id="open_search" onclick="showsearch()"> 
+                                        <i class="fas fa-search white-icon"></i> 
+                                    </a>
+                                    <!-- close search button -->
+                                    <a href="#" class="searchBtn" id="close_search" onclick="closesearch()"> 
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                    
+                                    <!-- search div hide untel click in button -->
+                                    <div id="search_container">
+                                        <form id="searchform" class="header-searchform" action="#" method="get" target="_blank">
+                                            <input maxlength="20" class="inputbox" type="text" size="20" placeholder="search ...">
+                                            <button type="submit" id="searchsubmit" class="searchsubmit fas fa-search white-icon"></button>
+                                        </form>
+                                     </div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- logo - navbar -->
+                <div class="navbar-logo">
+                    <div class="row">
+                        
+                        <!-- logo -->
+                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                            <div class="logo">
+                                <a href="#">
+                                    alwaha
+                                </a>
+                            </div>
+                            <div class="open_menu visible-xs">
+                                <a href="#" onclick="openNav()"> <i class="fas fa-bars"></i> </a>
+                            </div>
+                        </div>
+                        
+                        <!-- navbar -->
+                        <div class="col-lg-10 col-md-10 col-sm-2 col-xs-12">
+                            <div class="nav-bar">
+                                <ul>
+                                    <li class="for-mobile">
+                                        <a href="#" onclick="closeNav()"> 
+                                            Back  <i class="fas fa-times"></i>
+                                        </a> 
+                                    </li>
+                                    <li> <a href="index.html"> Home </a> </li>
+                                    <li> <a href="#Offers"> Offers </a> </li>
+                                    <li> <a href="#Whatweoffer"> What we offer </a> </li>
+                                    <li> <a href="aboutus.html"> About Us </a> </li>
+                                    <li> <a href="contact.html"> Contact Us </a> </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                
+            </div> <!-- // main-header  -->
+            
+        </div> <!-- // container  -->
+    </div> <!-- // header -->
+
+    <div id="page_header" class="page-subheader page-subheader-bg">
+
+        <!-- Sub-Header content wrapper -->
+        <div class="ph-content-wrap d-flex">
+            <div class="container align-self-center">
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="subheader-titles">
+                            <h2 class="subheader-maintitle">
+                               Categorys
+                            </h2>
+
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <ul class="breadcrumbs fixclear">
+                            <li><a href="/">Home</a></li>
+                            <li>Categorys</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub-Header bottom mask style 6 -->
+        <div class="kl-bottommask kl-bottommask--mask6">
+            <svg width="2700px" height="57px" class="svgmask" viewBox="0 0 2700 57" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+                <defs>
+                    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-mask6">
+                        <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                        <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                        <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+                        <feMerge>
+                            <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g transform="translate(-1.000000, 10.000000)">
+                    <path d="M0.455078125,18.5 L1,47 L392,47 L1577,35 L392,17 L0.455078125,18.5 Z" fill="#000000"></path>
+                    <path d="M2701,0.313493752 L2701,47.2349598 L2312,47 L391,47 L2312,0 L2701,0.313493752 Z" fill="#fbfbfb" class="bmask-bgfill" filter="url(#filter-mask6)"></path>
+                    <path d="M2702,3 L2702,19 L2312,19 L1127,33 L2312,3 L2702,3 Z" fill="#cd2122" class="bmask-customfill"></path>
+                </g>
+            </svg>
+        </div>
+        
+    </div>
+    
+    <!-- categorys page -->
+    <div class="latest_product categorys_product_page">
+        <div class="container">
+            
+        <ul class="nav nav-tabs nav-page-caty" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#Products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#Services">Services</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+
+                <div class="tab-pane active" id="Products" role="tabpanel" aria-labelledby="Products">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                            <ul class="nav nav-tabs nav-page-caty nav-page-sub-caty" role="tablist">
+                              <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Product1"> <i class="fas fa-angle-right"></i> Product 1</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Product2"><i class="fas fa-angle-right"></i> Product 2</a>
+                              </li>
+                            </ul>
+                        </div> 
+
+                        <div class="col-md-9 col-xs-12">
+                            <div class="tab-content">
+                            <div class="tab-pane active" id="Product1" role="tabpanel" aria-labelledby="Product1">
+                                <div class="items_product">
+                                    <div class="row">
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/item1.jpeg">
+                                                <h3>Make-up</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i>add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/item7.jpeg">
+                                                <h3>face Mattresses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/item3.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/item4.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="Product2" role="tabpanel" aria-labelledby="Product2">
+                                <div class="items_product">
+                                    <div class="row">
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best1.jpeg">
+                                                <h3>Make-up</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i>add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best2.jpeg">
+                                                <h3>face Mattresses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best3.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best5.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="Services" role="tabpanel" aria-labelledby="Services">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                            <ul class="nav nav-tabs nav-page-caty nav-page-sub-caty" role="tablist">
+                              <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#Services1"> <i class="fas fa-angle-right"></i> Services 1</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Services2"><i class="fas fa-angle-right"></i> Services 2</a>
+                              </li>
+                                                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Services2"><i class="fas fa-angle-right"></i> Services 2</a>
+                              </li>
+                                                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Services2"><i class="fas fa-angle-right"></i> Services 2</a>
+                              </li>
+                                                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Services2"><i class="fas fa-angle-right"></i> Services 2</a>
+                              </li>
+                                                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Services2"><i class="fas fa-angle-right"></i> Services 2</a>
+                              </li>
+                                                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#Services2"><i class="fas fa-angle-right"></i> Services 2</a>
+                              </li>
+                            </ul>
+                        </div> 
+
+                        <div class="col-md-9 col-xs-12">
+                            <div class="tab-content">
+                            <div class="tab-pane active" id="Services1" role="tabpanel" aria-labelledby="Services1">
+                                <div class="items_product">
+                                    <div class="row">
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best1.jpeg">
+                                                <h3>Make-up</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i>add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/item7.jpeg">
+                                                <h3>face Mattresses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/item3.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/item4.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="Services2" role="tabpanel" aria-labelledby="Services2">
+                                <div class="items_product">
+                                    <div class="row">
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best1.jpeg">
+                                                <h3>Make-up</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i>add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best2.jpeg">
+                                                <h3>face Mattresses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best3.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="item_pro " data-wow-delay="0.20s">
+                                                <img src="images/best5.jpeg">
+                                                <h3>Lenses</h3>
+                                                <div class="price_add">
+                                                    <h6>300 S.R</h6>
+                                                    <a href="#"> <i class="fas fa-cart-plus"></i> add to cart </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+
+
+            
+        </div>
+    </div> <!-- // latest product -->
+    
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="links_footer">
+                        <h3 class="title_footer"> Alwaha Pages </h3>
+                        <ul>
+                            <li> <a href="#Home"> Home </a> </li>
+                            <li> <a href="#Offers"> Offers </a> </li>
+                            <li> <a href="#Whatweoffer"> What we offer </a> </li>
+                            <li> <a href="#Home"> About Us </a> </li>
+                            <li> <a href="#Home"> Contact Us </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-xs-12">
+                    <div class="newsletter">
+                        <h3 class="title_footer"> NEWSLETTER SIGNUP </h3>
+                        <p>By subscribing to our mailing list you will always be update with the latest news from us.</p>
+                        <form  action="#" name="newsletter">
+                            <input type="email" placeholder="example@email.com" name="email">
+                            <button type="submit" class="btn btn-submit">join us</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-xs-12">
+                    <div class="info_footer">
+                        <h3 class="title_footer"> GET IN TOUCH </h3>
+                        <a href="tel:0220187656" class="phone_footer"><i class="fas fa-phone"></i> (+966) 0220187656</a>
+                        <a href="mailto:admin@alwaha.com" class="email_footer"> <i class="fas fa-envelope"></i> admin@alwaha.com</a>
+                        <p class="adress">
+                            Street nr 100, 4536534, Chicago, US
+                        </p>
+                        <a href="https://google.com/maps" target="_blank"> open in google maps </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- last footer -->
+            <div class="last_footer">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <p class="text_copyright">
+                            <a href="#home"> Alwaha </a> © 2019 All rights reserved. 
+                        </p>
+                        <p class="buy_f"> Buy <a href="http://www.filerole.com/" target="_blank">filerole</a> </p>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+                        <div class="social_footer">
+                            <h5>get social</h5>
+                            <ul>
+                                <li> <a href="#" target="_blank"> <i class="fab fa-facebook-f"></i> </a> </li>
+                                <li> <a href="#" target="_blank"> <i class="fab fa-twitter"></i> </a> </li>
+                                <li> <a href="#" target="_blank"> <i class="fab fa-instagram"></i> </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- // last footer -->
+            
+            
+        </div>
+    </footer> <!-- // footer -->
+   
+    <!-- js files -->
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

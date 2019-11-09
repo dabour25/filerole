@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Count down</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container" style="width: 80%;margin: 50px auto;">
+        <h3>Day : <span id="date"></span></h3>
+        <h3>Current Time : <span id="time"></span></h3>
+        <h3>Last Time : <span id="last"></span></h3>
+        <h3>Remaining Time : <span id="rem"></span></h3>
+        <ul>
+            <li id="remhrs">Hrs:</li>
+            <li id="remmin">Min:</li>
+            <li id=remsec>Sec:</li>
+        </ul>
+        <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar"
+            aria-valuemin="0" aria-valuemax="100" style="width:1%;min-width:3em;text-shadow:1px 1px 1px black;" id="progress">
+                C
+            </div>
+        </div>
+        <script type="text/javascript">
+            setInterval(function(){
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                var starttime = new Date(date+" 09:00:00").getTime();
+                var endtime = new Date(date+" 17:30:00").getTime();
+                var ts = today - starttime;
+                var t = endtime - today;
+                var shours = Math.floor((ts%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+                var sminutes = Math.floor((ts % (1000 * 60 * 60)) / (1000 * 60)); 
+                var sseconds = Math.floor((ts % (1000 * 60)) / 1000); 
+                var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+                var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+                var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+                $('#date').text(date);
+                $('#time').text(time);
+                $('#last').text(shours+":"+sminutes+":"+sseconds);
+                $('#rem').text(hours+":"+minutes+":"+seconds);
+                $('#remhrs').text('Hrs:'+hours);
+                $('#remmin').text('Min:'+(minutes+hours*60));
+                $('#remsec').text('Sec:'+(seconds+minutes*60+hours*60*60));
+                var precentage=parseInt((30600-(seconds+minutes*60+hours*60*60))*100/30600);
+                $('#progress').text(precentage+' %');
+                $('#progress').width(precentage+'%');
+                if(precentage>80){
+                    $( "#progress" ).removeClass( "bg-danger" );
+                    $("#progress").removeClass("bg-warning");
+                    $("#progress").removeClass("bg-info");
+                    $("#progress").removeClass("bg-primary");
+                    $("#progress").addClass("bg-success");
+                }else if(precentage>60){
+                    $( "#progress" ).removeClass( "bg-danger" );
+                    $("#progress").removeClass("bg-warning");
+                    $("#progress").removeClass("bg-info");
+                    $("#progress").addClass("bg-primary");
+                }else if(precentage>40){
+                    $( "#progress" ).removeClass( "bg-danger" );
+                    $("#progress").removeClass("bg-warning");
+                    $("#progress").addClass("bg-info");
+                }else if(precentage>20){
+                    $( "#progress" ).removeClass( "bg-danger" );
+                    $("#progress").addClass("bg-warning");
+                }
+            }, 1000);
+        </script>
+    </div>
+</body>
+</html>
