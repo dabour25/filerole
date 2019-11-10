@@ -685,28 +685,68 @@ function close_alert() {
     $('.alert_new').css("display", "none");
 };
 
-var clicked = false;
 $(".checkall_check").on("click", function () {
     $('.checkall_check').css("display", "none");
     $('.checkall_uncheck').css("display", "block");
-    $(".checkhour").prop("checked", !clicked);
-    clicked = !clicked;
+    $(".checkhour").prop("checked", true);
+    $(".partext").css("color", "#41901a");
 });
 
-var clicked = false;
 $(".checkall_uncheck").on("click", function () {
     $('.checkall_check').css("display", "block");
     $('.checkall_uncheck').css("display", "none");
-    $(".checkhour").prop("checked", !clicked);
-    clicked = !clicked;
+    $(".checkhour").prop("checked", false);
+    $('.partext').css("color", "#000");
 });
 
-function checkallin() {
-    if ($('.mega-dropdown').hasClass('open')) {
-        $(".open .checkhour").prop("checked", !clicked);
-        clicked = !clicked;
+function checkcolor(par_id){
+    if($('.checkchild'+par_id+':checked').length ==$('.checkchild'+par_id).length){
+        $('#partext'+par_id).css("color", "#41901a");
+        if($('.checkchild'+par_id).length==0&&!$('#par'+par_id).is(':checked')){
+            $('#partext'+par_id).css("color", "#000");
+        }
+    }else if($('.checkchild'+par_id+':checked').length >0){
+        $('#partext'+par_id).css("color", "#776e2c");
+    }else{
+        $('#partext'+par_id).css("color", "#000");
     }
-};
+}
+
+function checkselectedpar(par_id,child_id){
+    if($('.checkchild'+par_id+':checked').length >0){
+        $('#par'+par_id).prop("checked", true);
+    }else{
+        $('#par'+par_id).prop("checked", false);
+    }
+    checkcolor(par_id);
+}
+
+function checkselected(par_id,child_id){
+    if($('.tinycheck'+child_id+':checked').length >0){
+        $("#child"+child_id).prop("checked", true);
+    }else{
+        $("#child"+child_id).prop("checked", false);
+    }
+    checkselectedpar(par_id,child_id);
+}
+
+function checkallin(par_id) {
+    if ($('#par'+par_id).is(':checked')){
+        $(".checkchild"+par_id).prop("checked", true);
+    }else{
+        $(".checkchild"+par_id).prop("checked", false);
+    }
+    checkcolor(par_id);
+}
+
+function checktiny(par_id,child_id) {
+    if ($('#child'+child_id).is(':checked')){
+        $(".tinycheck"+child_id).prop("checked", true);
+    }else{
+        $(".tinycheck"+child_id).prop("checked", false);
+    }
+    checkselectedpar(par_id,child_id);
+}
 
 function addsuppliersbtn() {
     $('.products').select2("destroy");

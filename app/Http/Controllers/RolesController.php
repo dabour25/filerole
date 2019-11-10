@@ -81,8 +81,8 @@ class RolesController extends Controller
         $auths = $request->acs;
 
         if (count($auths)) {
-            foreach ($auths as $auth) {
-                $auth = org_function::where('org_id', Auth::user()->org_id)->where('id', $auth)->first();
+            foreach ($auths as $authf) {
+                $auth = org_function::where('org_id', $input['org_id'])->where('id', $authf)->first();
                 $role_auth = new functions_role;
                 $role_auth->funcname = $auth->funcname;
                 $role_auth->funcname_en = $auth->funcname_en;
@@ -96,13 +96,11 @@ class RolesController extends Controller
                 $role_auth->porder = $auth->porder;
                 $role_auth->func_name = $auth->func_name;
                 $role_auth->save();
-
-
             }
         }
-        //  22/6/2019 chang ghada
+        //  22/6/2019 chang ghada (Error Here // detect by Ahmed Magdy)
         //$all_auth=  org_function::where('org_id', Auth::user()->org_id)->where('id',$auth)->get();
-        if (count($auths)) {
+        /*if (count($auths)) {
             $all_auth = org_function::where('org_id', Auth::user()->org_id)->wherein('id', $auths)->select('funcparent_id')->distinct()->get();
         } else
             $all_auth = org_function::where('org_id', 0)->select('funcparent_id')->distinct()->get();
@@ -124,7 +122,9 @@ class RolesController extends Controller
                 $role_partent->save();
 
             }
-        }
+        }*/
+
+
         //redirect back to roles.index
         return redirect('admin/roles');
     }
@@ -156,7 +156,7 @@ class RolesController extends Controller
         $role = Role::findOrFail($id);
        
         $authentications = org_function::where('org_id', Auth::user()->org_id)->where('funcparent_id', '>', '0')->get();
-        $parent_auths = org_function::where('org_id', Auth::user()->org_id)->where('funcparent_id', '=', '0')->get();
+        $parent_auths = org_function::where('org_id', Auth::user()->org_id)->where('funcparent_id', '=', '0')->orderby('porder')->get();
         return view('roles.edit', compact('role', 'authentications', 'parent_auths'));
     }
 
@@ -201,7 +201,7 @@ class RolesController extends Controller
 
         //  22/6/2019 chang ghada
         // $all_auth=  org_function::where('org_id',Auth::user()->org_id)->where('id',$role_auths)->get();
-        $all_auth = org_function::where('org_id', Auth::user()->org_id)->wherein('id', $role_auths)->select('funcparent_id')->distinct()->get();
+        /*$all_auth = org_function::where('org_id', Auth::user()->org_id)->wherein('id', $role_auths)->select('funcparent_id')->distinct()->get();
 
 
         foreach ($all_auth as $value) {
@@ -222,7 +222,7 @@ class RolesController extends Controller
             
             $role_partent->save();
 
-        }
+        }*/
 
 
         //set session message and redirect back roles.index
